@@ -1,78 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--favicon-->
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <!--favicon-->
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/addressBookForm.css">
-    <title>Address Book</title>
+    <title>Address Book Form</title>
 </head>
+
 <body>
-    <!--UC1-->
     <header class="header-content header">
         <div class="logo-content">
-            <img class="logo" src="../assets/images/aadressbookimage.png" alt="logo-content">
+            <img src="../assets/images/aadressbookimage.png" height="50" width="60" style="padding-right: 10px;" alt="">
             <div>
-                <span class="adr-text">ADDRESS</span><br>
-                <span class="adr-text addr-book">BOOK</span>
+                <span class="address-text">Address</span><br>
+                <span class="address-text address-book">Book</span><br>
             </div>
         </div>
     </header>
-    <!--UC2-->
     <div class="form-content">
-        <form class="form" action="#" onsubmit="save(event); false" onreset="reset()">
-            <div class="form-head">
-                <span class="form-head-text">PERSON ADDRESS FORM</span>
-                <span class="cross-icon">
-                    <img src="../assets/images/cross_icon.png" class="close-circle" name="close-circle" onclick="cancel();">
-                    </ion-icon>
-                </span>
+        <div class="form-head">
+            <span> PERSON ADDRESS FORM </span>
+            <span id="img"><a href="" class="cancel-button"><img src="../assets/images/cross_icon.png"
+                        height="30" width="30" alt=""></a></span>
+        </div>
+        <form class="form" action="#" onsubmit="save(); return false">
+            <label class="label text" for="name"></label>
+            <div class="row-content">
+                <input class="input" type="text" id="name" name="name" placeholder="Enter Full Name" required>
+                <error-output class="name-error" for="name"></error-output>
             </div>
-            <!--UC3-->
-            <div class="body">
-                <label class="label text" for="name"></label><br>
-                <input class="input" type="text" id="name" name="name" placeholder="Full name" required>
-                <error-output class="text-error"></error-output>
 
-                <label class="label text" for="address"></label><br>
-                <textarea id="address" class="input" name="address" placeholder="Address" style="height: 100px; "></textarea>
-                <error-output class="address-error"></error-output>
+            
 
-                <div class="row-content">
-                    <div class="label-city">
-                        <label class="city" for="city"></label><br>
-                        <select id="city" name="city">
-                            <option value="0">Select City</option>
-                            <option value="Others">Others</option>
-                            <option value="Agra">Agra</option>
-                            <option value="Ahmedabad">Ahmedabad</option>
-                            <option value="Bangalore">Bangalore</option>
-                            <option value="Bhubaneshwar">Bhubaneshwar</option>
-                            <option value="Bhopal">Bhopal</option>
-                            <option value="Chandigarh">Chandigarh</option>
-                            <option value="Chennai">Chennai</option>
-                            <option value="Coimbatore">Coimbatore</option>
-                            <option value="Dombivli">Dombivli</option>
-                            <option value="Gurgaon">Gurgaon</option>
-                            <option value="Hyderabad">Hyderabad</option>
-                            <option value="Jaipur">Jaipur</option>
-                            <option value="Kolkata">Kolkata</option>
-                            <option value="Kozhikode">Kozhikode</option>
-                            <option value="Lucknow">Lucknow</option>
-                            <option value="Mumbai">Mumbai</option>
-                            <option value="Nagpur">Nagpur</option>
-                            <option value="New Delhi">New Delhi</option>
-                            <option value="Noida">Noida</option>
-                            <option value="Pimpri Chinchwad">Pimpri Chinchwad</option>
-                            <option value="Pune">Pune</option>
-                            <option value="Rajkot">Rajkot</option>
+            <label class="label text" for="address"></label>
+            <div class="row-content">
+                <textarea class="input" name="address" id="address" rows="4" placeholder="Enter Address"></textarea>
+                <error-output class="address-error" for="address"></error-output>
+            </div>
+
+            <div class="row">
+                <div class="input-content">
+                    <label class="label text" for="city"></label>
+                    <div class="row-content">
+                        <select class="input" name="city" id="city">
+                          <option value="0">Select City</option>
+                          <option value="Others">Others</option>
+                          <option value="Agra">Agra</option>
+                          <option value="Ahmedabad">Ahmedabad</option>
+                          <option value="Bangalore">Bangalore</option>
+                          <option value="Bhubaneshwar">Bhubaneshwar</option>
+                          <option value="Bhopal">Bhopal</option>
+                          <option value="Chandigarh">Chandigarh</option>
+                          <option value="Chennai">Chennai</option>
+                          <option value="Coimbatore">Coimbatore</option>
+                          <option value="Dombivli">Dombivli</option>
+                          <option value="Gurgaon">Gurgaon</option>
+                          <option value="Hyderabad">Hyderabad</option>
+                          <option value="Jaipur">Jaipur</option>
+                          <option value="Kolkata">Kolkata</option>
+                          <option value="Kozhikode">Kozhikode</option>
+                          <option value="Lucknow">Lucknow</option>
+                          <option value="Mumbai">Mumbai</option>
+                          <option value="Nagpur">Nagpur</option>
+                          <option value="New Delhi">New Delhi</option>
+                          <option value="Noida">Noida</option>
+                          <option value="Pimpri Chinchwad">Pimpri Chinchwad</option>
+                          <option value="Pune">Pune</option>
+                          <option value="Rajkot">Rajkot</option>
                         </select>
                     </div>
-                    <div class="lable-state">
-                        <label class="state" for="state"></label><br>
-                        <select name="state" id="state">
+                </div>
+                <div class="input-content">
+                    <label class="label text" for="state"></label>
+                    <div class="row-content">
+                        <select class="input" name="state" id="state">
                             <option value="0">Select State</option>
                             <option value="Others">Others</option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -114,16 +118,22 @@
                             <option value="West Bengal">West Bengal</option>
                         </select>
                     </div>
-                    <div class="lable-zip">
-                        <label class="zip" for="zipcode"></label></br>
-                        <input class="input" type="zipcode" id="zipcode" placeholder="Zip Code" name="zipcode"></input>
+                </div>
+                <div class="input-content">
+                    <label class="label text" for="zip"></label>
+                    <div class="row-content">
+                        <input class="input" type="number" id="zip" name="zip" placeholder="Enter Zip Code" required>
                     </div>
                 </div>
-
-                <label class="label-text-phone" for="phone"></label><br>
-                <input class="input" type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-                <error-output class="phone-error"></error-output>
+            </div>
+            <label class="label text" for="phone"></label>
+            <div class="row-content">
+                <input class="input" type="tel" id="phone" name="phone" placeholder="Enter Phone Number" required>
+                <error-output class="phone-error" for="phone"></error-output>
+            </div>
         </form>
     </div>
+        <script src="../js/addressBookForm.js"></script>
 </body>
+
 </html>
