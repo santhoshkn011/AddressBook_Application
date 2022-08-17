@@ -1,7 +1,6 @@
 class AddressBookContact{
 
   constructor(id,name,phone,address,city,state,zip){
-      this.id;
       this.name;
       this.phone;
       this.address;
@@ -9,14 +8,7 @@ class AddressBookContact{
       this.state;
       this.zip;
   }
-
-  get id(id){
-    return this._id;
-  }
-
-  set id(id) {
-    this._id = id;
-  } 
+ 
   get name() {
       return this._name;
   }
