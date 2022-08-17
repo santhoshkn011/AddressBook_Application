@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     addrBookList = getAddressBookDataFromStorage();
     document.querySelector(".per-count").textContent = addrBookList.length;
     createInnerHtml();
+    localStorage.removeItem('editAddr');
 });
 
 getAddressBookDataFromStorage = () => {
@@ -26,7 +27,7 @@ const createInnerHtml = () => {
                 <td>${addrBookData._phone}</td>
                 <td>
                     <img id="${addrBookData._id}" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
-                    <img id="1" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
+                    <img id="${addrBookData._id}" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
                 </td>
             </tr>
         `;
@@ -44,4 +45,12 @@ const remove = (node) => {
     localStorage.setItem('AddressBookList', JSON.stringify(addrBookList));
     document.querySelector('.per-count').textContent = addrBookList.length;
     createInnerHtml();
+}
+
+const update = (node) => {
+    let addrAddressData = addrBookList.find(addrData => addrData._id == node.id)
+    if(!addrAddressData) return;
+    localStorage.setItem('editAddr', JSON.stringify(addrAddressData))
+    window.location.replace(site_properties.add_addressBook_page);
+    
 }
