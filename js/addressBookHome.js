@@ -1,23 +1,35 @@
+let addrBookList
 window.addEventListener('DOMContentLoaded', (event) => {
+    addrBookList = getAddressBookDataFromStorage();
+    document.querySelector(".per-count").textContent = addrBookList.length;
     createInnerHtml();
 });
 
+getAddressBookDataFromStorage = () => {
+    return localStorage.getItem('AddressBookList') ? 
+                    JSON.parse(localStorage.getItem('AddressBookList')) : [];
+}
+
 const createInnerHtml = () => {
-    const HeaderHtml = "<tr><th>Full Name</th><th>Address</th><th>City</th><th>State</th>" +
-    "<th>Zip Code</th><th>Phone Number</th><th>Options</th></tr>";
-    const innerHtml = `${HeaderHtml}   
-                <tr>
-                    <td>Santhosh Kumar Nayak</td>
-                    <td>123 34 Steet number 8</td>
-                    <td>Hyderabad</td>
-                    <td>Telangana</td>
-                    <td>500013</td>
-                    <td>+91 9999988888</td>
-                    <td>
-                        <img id="1" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
-                        <img id="1" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
-                    </td>
-                </tr>
-                `;
+    if (addrBookList.length == 0) return;
+    const headerHtml = "<tr><th>Full Name</th><th>Address</th><th>City</th><th>State</th>" +
+        "<th>Zip Code</th><th>Phone Number</th><th>Options</th></tr>";
+    let innerHtml = `${headerHtml}`;
+    for (let addrBookData of addrBookList) {
+        innerHtml = `${innerHtml}
+            <tr>
+                <td>${addrBookData._name}</td>
+                <td>${addrBookData._address}</td>
+                <td>${addrBookData._city}</td>
+                <td>${addrBookData._state}</td>
+                <td>${addrBookData._zip}</td>
+                <td>${addrBookData._phone}</td>
+                <td>
+                    <img id="1" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
+                    <img id="1" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
+                </td>
+            </tr>
+        `;
+    }
     document.querySelector('#display').innerHTML = innerHtml;
 }
