@@ -69,8 +69,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: right;
-  font: normal normal normal 25px/37px Roboto;
-  letter-spacing: 0px;
+  font: normal normal normal 25px/35px Roboto;
+  letter-spacing: 1px;
   color: #fff;
   background-color: #008CFF;
   text-transform: uppercase;
