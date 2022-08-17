@@ -35,6 +35,7 @@ const createInnerHtml = () => {
     document.querySelector('#display').innerHTML = innerHtml;
 }
 
+//Removing the data
 const remove = (node) => {
     let addrAddressData = addrBookList.find(addrData => addrData._id == node.id);
    if(!addrAddressData) return;
@@ -47,6 +48,7 @@ const remove = (node) => {
     createInnerHtml();
 }
 
+//Updating the data
 const update = (node) => {
     let addrAddressData = addrBookList.find(addrData => addrData._id == node.id)
     if(!addrAddressData) return;
