@@ -60,14 +60,34 @@ function createAndUpdateStorage(contactList) {
   localStorage.setItem("AddressBookList", JSON.stringify(addressBookList));
 }
 
-const createId = () => {
-  var id = localStorage.getItem("currentId");
-  if (id == undefined) {
-      localStorage.setItem("currentId", 1);
-      return 2;
-  } else {
-      id = id + 1;
-      localStorage.setItem("currentId", id);
-      return id;
-  }
+// const createId = () => {
+//   var id = localStorage.getItem("currentId");
+//   if (id == undefined) {
+//       localStorage.setItem("currentId", 1);
+//       return 2;
+//   } else {
+//       id = id + 1;
+//       localStorage.setItem("currentId", id);
+//       return id;
+//   }
+// };
+
+//Reset
+const resetForm = () => {
+  setValue('#name', '');
+  setValue('#phone', '');
+  setValue('#address', '');
+  setValue('#city', '');
+  setValue('#state', '');
+  setValue('#zip', '');
 };
+
+const setTextValue = (id, value) => {
+  const element = document.querySelector(id);
+  element.textContent = value;
+}
+
+const setValue = (id, value) => {
+  const element = document.querySelector(id);
+  element.value = value;
+}
